@@ -1,6 +1,6 @@
 #include "monty.h"
 
-op_data = {NULL, NULL, 0};
+op_data_t op_data;
 
 /**
  * main - main function
@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	
+	op_data = {NULL, NULL, fd};
 	for (line_number = 1; ret_getline > 0 ; line_number++)
 	{
 		ret_getline = getline(&line, &line_size, fd);
