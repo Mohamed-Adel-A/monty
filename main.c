@@ -33,11 +33,11 @@ void stack_pint(stack_t **stack, unsigned int line_number)
 ssize_t execute_line(stack_t **stack, char *line, unsigned int line_number)
 {
 	int i = 0;
-	instruction_t opfunc[] = { 
+	instruction_t opfunc[] = {
 								{"push", stack_push},
 								{"pall", stack_pall},
 								{"pint", stack_pint},
-								{NULL, NULL}	
+								{NULL, NULL}
 							};
 
 	op_data.opcode = strtok(line, " \n");
@@ -79,12 +79,11 @@ int main(int argc, char **argv)
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);		
+		exit(EXIT_FAILURE);
 	}
-
 	filename = argv[1];
 	fd = fopen(filename, "r");
-	if(fd == NULL)
+	if (fd == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
@@ -99,16 +98,16 @@ int main(int argc, char **argv)
 			if (ret_execute_line == -1)
 			{
 				fflush(0);
-				fprintf(stderr, "L%d: unknown instruction %s\n", line_number, op_data.opcode);
+				fprintf(stderr, "L%d: unknown instruction %s\n",
+						line_number, op_data.opcode);
 				free(line);
 				fclose(fd);
 				/*free_stack(stack);*/
-				exit(EXIT_FAILURE);				
+				exit(EXIT_FAILURE);
 			}
 		}
 		free(line);
 		line = NULL;
 	}
-
 	return (0);
 }
