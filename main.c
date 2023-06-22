@@ -24,7 +24,17 @@ void stack_pint(stack_t **stack, unsigned int line_number)
  */
 void free_stack(stack_t *stack)
 {
-	(void) stack;
+	stack_t next;
+
+	if (stack == NULL)
+		return;
+
+	while(stack != NULL)
+	{
+		next = stack->next;
+		free(stack);
+		stack = next;
+	}
 }
 
 /**
