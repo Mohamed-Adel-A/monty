@@ -100,7 +100,7 @@ void (get_op_function(char *opcode))(stack_t **stack, unsigned int line_number)
 	int i = 0;
 	instruction_t opfunc[] = { 
 								{"push", stack_push},
-								{"pall", stack_pull},
+								{"pall", stack_pall},
 								{"pint", stack_pint),
 								{NULL, NULL}	
 							};
@@ -111,4 +111,24 @@ void (get_op_function(char *opcode))(stack_t **stack, unsigned int line_number)
 			return (opfunc[i].f);
 	}
 	return (NULL);
+}
+
+
+
+void stack_push(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	printf("stack push %ui", line_number);
+}
+
+void stack_pall(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	printf("stack pall %ui", line_number);
+}
+
+void stack_pint(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	printf("stack pint %ui", line_number);
 }
