@@ -3,6 +3,7 @@
 /***********************************************************/
 void stack_pall(stack_t **stack, unsigned int line_number);
 void stack_pint(stack_t **stack, unsigned int line_number);
+void stack_pop(stack_t **stack, unsigned int line_number);
 /***********************************************************/
 
 /**
@@ -53,13 +54,13 @@ void stack_pint(stack_t **stack, unsigned int line_number)
 
 
 /**
- * stack_pint - removes the top element of the stack.
+ * stack_pon - removes the top element of the stack.
  * @stack: stack head
  * @line_number: line number
  *
  * Return: void
  */
-void stack_pint(stack_t **stack, unsigned int line_number)
+void stack_pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = *stack;
 
