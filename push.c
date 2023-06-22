@@ -53,7 +53,7 @@ void stack_push(stack_t **stack, unsigned int line_number)
 				line_number);
 		free(op_data.line);
 		fclose(op_data.fd);
-		free_stack(&stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
   }
 	printf("%u: stack push %s\n", line_number, op_data.oparg);
