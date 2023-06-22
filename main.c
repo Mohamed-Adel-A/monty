@@ -46,6 +46,7 @@ ssize_t execute_line(stack_t **stack, char *line, unsigned int line_number)
 	
 	for (i = 0; opfunc[i].opcode != NULL; i++)
 	{
+		printf("%i %s : %s", i, op_data.opcode, opfunc[i].opcode);
 		if (strcmp(op_data.opcode, opfunc[i].opcode) == 0)
 			opfunc[i].f(stack, line_number);
 	}
