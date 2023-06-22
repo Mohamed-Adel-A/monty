@@ -47,7 +47,7 @@ void stack_rotr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *bottom, *prev;
 
-	(void) line_count;
+	(void) line_number;
 	if (!stack || !*stack || !(*stack)->next)
 		return;
 
