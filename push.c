@@ -18,7 +18,7 @@ void stack_pall(stack_t **stack, unsigned int line_number);
 int _isnumber(const char *str)
 {
 	int i = 0;
-	
+
 	if (str == NULL || str[0] == '\0')
 		return (0);
 
@@ -85,7 +85,13 @@ void malloc_error(stack_t **stack)
 	exit(EXIT_FAILURE);
 }
 
-
+/**
+ * add_stack - add node to stack
+ * @stack: stack head
+ * @n: node data
+ *
+ * Return: void
+ */
 void add_stack(stack_t **stack, int n)
 {
 	stack_t *new, *head = *stack;
