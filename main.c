@@ -22,7 +22,7 @@ void stack_pint(stack_t **stack, unsigned int line_number)
 }
 
 
-void (get_op_function(char *opcode))(stack_t **stack, unsigned int line_number)
+void ((get_op_function)(char *opcode))(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
 	instruction_t opfunc[] = { 
