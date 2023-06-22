@@ -78,7 +78,6 @@ ssize_t execute_line(stack_t **stack, char *line, unsigned int line_number)
  */
 int main(int argc, char **argv)
 {
-	char *filename, *line = NULL;
 	size_t line_size = 0;
 	ssize_t ret_getline = 1, ret_execute_line;
 	unsigned int line_number;
@@ -98,22 +97,22 @@ int main(int argc, char **argv)
 	}
 	for (line_number = 1; ret_getline > 0 ; line_number++)
 	{
-		ret_getline = getline(&line, &line_size, op_data.fd);
+		op_data.line = NULL;
+		ret_getline = getline(&op_data.line, &line_size, op_data.fd);
 		if (ret_getline > 0)
 		{
-			ret_execute_line = execute_line(&stack, line, line_number);
+			ret_execute_line = execute_line(&stack, op_data.line, line_number);
 			if (ret_execute_line == -1)
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n",
 						line_number, op_data.opcode);
-				free(line);
+				free(op_data.line);
 				fclose(op_data.fd);
 				free_stack(stack);
 				exit(EXIT_FAILURE);
 			}
 		}
-		free(line);
-		line = NULL;
+		free(op_data.line);
 	}
 	free_stack(stack);
 	fclose(op_data.fd);
