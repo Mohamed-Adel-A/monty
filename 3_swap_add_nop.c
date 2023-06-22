@@ -2,6 +2,7 @@
 
 void stack_swap(stack_t **stack, unsigned int line_number);
 void stack_add(stack_t **stack, unsigned int line_number);
+void stack_nop(stack_t **stack, unsigned int line_number);
 
 /**
  * stack_swap -  swaps the top two elements of the stack.
@@ -79,4 +80,18 @@ void stack_add(stack_t **stack, unsigned int line_number)
 	free(first);
 
 	*stack = second;
+}
+
+
+/**
+ * stack_nop -  doesn’t do anything.
+ * @stack: stack head
+ * @line_number: line number
+ *
+ * Return: void
+ */
+void stack_nop(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	(void) line_number;
 }
