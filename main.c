@@ -53,20 +53,27 @@ void ((get_op_function)(char *opcode))(stack_t **stack, unsigned int line_number
  */
 ssize_t execute_line(stack_t **stack, char *line, unsigned int line_number)
 {
-	void (*opfunc)(stack_t **stack, unsigned int line_number);
+	int i = 0;
+	instruction_t opfunc[] = { 
+								{"push", stack_push},
+								{"pall", stack_pall},
+								{"pint", stack_pint},
+								{NULL, NULL}	
+							};
 
 	op_data.opcode = strtok(line, " \n");
-	if (op_data.opcode[0] == "#")
-	{
-		free(line);
+	if (!op_data.opcode || op_data.opcode[0] == "#")
 		return (0);
-	}
-
+	
 	opfunc = get_op_function(op_data.opcode);
-	if (opfunc == NULL)
+	for (i = 0, opfunc[i] != NULL, i++)
+	{
+		if (strcmp(opcode, opfunc[i].opcode == 0)
+			opfunc[i].f(stack, line_number);
+	}
+	if (opfunc[i].f == NULL)
 		return (-1);
 
-	opfunc(stack, line_number);
 	return (0);
 }
 
