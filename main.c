@@ -2,7 +2,7 @@
 
 int main(int argc, char **argv)
 {
-	FILE *f;
+	FILE *fd;
 	char *filename;
 
 	if (argc != 2)
@@ -12,14 +12,13 @@ int main(int argc, char **argv)
 	}
 
 	filename = argv[1];
-	f = fopen(filename, "r");
-	if(f == NULL)
+	fd = fopen(filename, "r");
+	if(fd == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 	
 	(void) argv;
-	(void) file;
 	return (0);
 }
