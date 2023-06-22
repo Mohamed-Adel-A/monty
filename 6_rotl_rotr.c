@@ -14,26 +14,21 @@ void stack_rotl(stack_t **stack, unsigned int line_number);
  */
 void stack_rotl(stack_t **stack, unsigned int line_number)
 {
-	stack_t *first = *stack, *last, *node = *stack;
+	stack_t *first = *stack, *last = *stack;
 
 	(void) line_number;
 	if (first == NULL || first->next == NULL)
 		return;
 
-	while (node != NULL)
+	while (last->next != NULL)
 	{
-		last = node;
-		node = node->next;
+		last = last->next;
 	}
 
-	last->next = first->next;
-	(last->prev)->next = first;
+	last->next = first;
+	*stack = first->next;
+	(*stack)->prev = NULL;
 
-	first->prev = last->prev;
-	(first->next)->prev = last;
-
-	last->prev = NULL;
 	first->next = NULL;
-
-	*stack = last;
+	first->prev = last;
 }
