@@ -50,11 +50,9 @@ void stack_pstr(stack_t **stack, unsigned int line_number)
 	stack_t *head = *stack;
 
 	(void) line_number;
-	while (head != NULL)/*&& (head->n > 0 && head->n <= 127))*/
+	while (head != NULL && (head->n > 0 && head->n <= 127))
 	{
-		if (head->n <= 0 || head->n >127)
-			break;
-		printf("%c\n", head->n);
+		printf("%c", head->n);
 		head = head->next;
 	}
 	printf("\n");
