@@ -45,10 +45,10 @@ void stack_rotl(stack_t **stack, unsigned int line_number)
  */
 void stack_rotr(stack_t **stack, unsigned int line_number)
 {
-	stack_t *first = *stack, *last = *stack;
+	stack_t *last = *stack;
 
 	(void) line_number;
-	if (first == NULL || first->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 		return;
 
 	while (last->next != NULL)
@@ -56,7 +56,7 @@ void stack_rotr(stack_t **stack, unsigned int line_number)
 		last = last->next;
 	}
 
-	last->next = *head;
+	last->next = *stack;
 	
 	last->prev->next = NULL;
 	last->prev = NULL;
