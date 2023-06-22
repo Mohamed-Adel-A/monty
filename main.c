@@ -1,7 +1,31 @@
 #include "monty.h"
 
+void free_stack(stack_t *stack);
+ssize_t execute_line(stack_t **stack, char *line, unsigned int line_number);
 op_data_t op_data = {NULL, NULL, NULL, 0};
 
+
+
+/**
+ * stack_pint - push int to stack
+ * @stack: stack head
+ * @line_number: line number
+ *
+ * Return: void
+ */
+void stack_pint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *head = *stack;
+
+	(void) line_number;
+	while (head != NULL)
+	{
+		printf("%i\n", head->n);
+		head = head->next;
+	}
+
+	/*printf("%u: stack pall %s\n", line_number, op_data.oparg);*/
+}
 
 /**
  * free_stack - free stack
