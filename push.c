@@ -67,8 +67,7 @@ void stack_push(stack_t **stack, unsigned int line_number)
 	number = atoi(op_data.oparg);
 	add_stack(stack, number);
 
-	
-	printf("%u: stack push %s\n", line_number, op_data.oparg);
+	/*printf("%u: stack push %s\n", line_number, op_data.oparg);*?/
 }
 
 /**
@@ -126,5 +125,5 @@ void stack_pall(stack_t **stack, unsigned int line_number)
 		head = head->next;
 	}
 
-	printf("%u: stack pall %s\n", line_number, op_data.oparg);
+	/*printf("%u: stack pall %s\n", line_number, op_data.oparg);*/
 }
