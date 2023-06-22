@@ -1,6 +1,6 @@
 #include "monty.h"
 
-op_data_t op_data = {NULL, NULL, NULL, 0};;
+op_data_t op_data = {NULL, NULL, NULL, 0};
 
 /**
  * main - main function
@@ -47,7 +47,8 @@ int main(int argc, char **argv)
 				exit(EXIT_FAILURE);				
 			}
 		}
-		free(line);		
+		free(line);
+		line = NULL;
 	}
 
 	return (0);
