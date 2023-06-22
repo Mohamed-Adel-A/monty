@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <stdio.h>
 
 op_data_t op_data = {NULL, NULL, NULL, 0};
 
@@ -110,7 +111,7 @@ int main(int argc, char **argv)
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n", line_number, op_data.opcode);
 				free(line);
-				fcolse(fd);
+				fclose(fd);
 				/*free_stack(stack);*/
 				exit(EXIT_FAILURE);				
 			}
