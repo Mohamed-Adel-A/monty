@@ -35,7 +35,14 @@ int _isnumber(const char *str)
 void stack_push(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
-  if (_isnumber(op_data.oparg) == 0)
-    
+	if (_isnumber(op_data.oparg) == 0)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n",
+				line_number);
+		free(op_data.line);
+		fclose(op_data.fd);
+		free_stack(&stack);
+		exit(EXIT_FAILURE);
+  }
 	printf("%u: stack push %s\n", line_number, op_data.oparg);
 }
