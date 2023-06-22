@@ -61,6 +61,8 @@ typedef struct instruction_s
 
 
 
+int _isnumber(const char *str);
+void stack_push(stack_t **stack, unsigned int line_number);
 
 
 #endif
