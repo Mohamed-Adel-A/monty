@@ -49,7 +49,7 @@ void stack_rotr(stack_t **stack, unsigned int line_number)
 
 	(void) line_number;
 	copy = *stack;
-	if (*head == NULL || (*head)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		return;
 	}
