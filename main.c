@@ -22,7 +22,7 @@ void stack_pint(stack_t **stack, unsigned int line_number)
  *
  * Return: void
  */
-void free_stack(stack_t **stack)
+void free_stack(stack_t *stack)
 {
 	(void) stack;
 }
