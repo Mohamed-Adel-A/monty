@@ -1,19 +1,5 @@
 #include "monty.h"
 
-/**
- * stuct op_data - instuction data
- * @opcode: opcode
- * @oparg: op argument
- * @fd: file descripter
- *
- */
-typedef struct op_data_struct
-{
-	char *opcode;
-	char *oparg;
-	FILE *fd;
-} op_data_t;
-extern op_data_t op_data;
 
 /**
  * main - main function
