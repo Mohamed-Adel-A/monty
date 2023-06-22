@@ -76,7 +76,7 @@ void stack_add(stack_t **stack, unsigned int line_number)
 	second->prev = first->prev;
 
 	second->n += first->n;
-	free(first)
+	free(first);
 
 	*stack = second;
 }
