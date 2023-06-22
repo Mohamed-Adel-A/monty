@@ -62,6 +62,7 @@ void stack_push(stack_t **stack, unsigned int line_number)
 	}
 
 	number = atoi(op_data.oparg);
+	add_stack(stack, number);
 
 	
 	printf("%u: stack push %s\n", line_number, op_data.oparg);
@@ -90,7 +91,7 @@ void add_stack(stack_t **stack, int n)
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		malloc_error(*head);
+		malloc_error(head);
 	}
 
 	new->n = n;
