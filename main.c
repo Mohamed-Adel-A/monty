@@ -43,7 +43,8 @@ ssize_t execute_line(stack_t **stack, char *line, unsigned int line_number)
 	op_data.opcode = strtok(line, " \n");
 	if (!op_data.opcode || op_data.opcode[0] == '#')
 		return (0);
-	
+
+	op_data.oparg = strtok(NULL, " \n");
 	for (i = 0; opfunc[i].opcode != NULL; i++)
 	{
 		if (strcmp(op_data.opcode, opfunc[i].opcode) == 0)
