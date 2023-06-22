@@ -11,6 +11,7 @@
 
 /**
  * stuct op_data - instuction data
+ * @line: line
  * @opcode: opcode
  * @oparg: op argument
  * @fd: file descripter
@@ -18,6 +19,7 @@
  */
 typedef struct op_data_struct
 {
+	char *line;
 	char *opcode;
 	char *oparg;
 	FILE *fd;
