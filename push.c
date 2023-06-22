@@ -93,7 +93,7 @@ void add_stack(stack_t **stack, int n)
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		malloc_error(head);
+		malloc_error(stack);
 	}
 
 	new->n = n;
@@ -103,5 +103,5 @@ void add_stack(stack_t **stack, int n)
 	}
 	new->next = head;
 	new->prev = NULL;
-	*head = new;
+	*stack = new;
 }
