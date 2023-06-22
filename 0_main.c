@@ -43,6 +43,7 @@ ssize_t execute_line(stack_t **stack, char *line, unsigned int line_number)
 					{"pint", stack_pint},
 					{"pop", stack_pop},
 					{"swap", stack_swap},
+					{"add", stack_add},
 					{NULL, NULL}
 				};
 
