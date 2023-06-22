@@ -1,19 +1,19 @@
 #include "monty.h"
 
-
 /**
  * stuct op_data - instuction data
- * @line: instruction line
  * @opcode: opcode
  * @oparg: op argument
+ * @fd: file descripter
  *
  */
-typedef struct op_data
+typedef struct op_data_struct
 {
-	char *line;
 	char *opcode;
-	char *oparg;	
+	char *oparg;
+	FILE *fd;
 } op_data_t;
+extern op_data_t op_data;
 
 /**
  * main - main function
@@ -25,9 +25,11 @@ typedef struct op_data
 int main(int argc, char **argv)
 {
 	FILE *fd;
-	char *filename, *line = NULL, opcode, oparg;
-	size_t line_size = 0, line_count = 1;
+	char *filename, *line = NULL;
+	size_t line_size = 0;
 	ssize_t ret_getline = 1, ret_execute_line;
+	unsigned int line_number;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
@@ -43,22 +45,20 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	for (line_count = 0; ret_getline > 0 ; line_count++)
+	op_data = {NULL, NULL, fd};
+	for (line_number = 1; ret_getline > 0 ; line_number++)
 	{
 		ret_getline = getline(&line, &line_size, fd);
 		if (ret_getline > 0)
 		{
-			opcode = strtok(line, " \n");
-			if (opcode[0] == "#")
-			{
-				free(line);
-				continue;
-			}
-			opfunction = get_op_function();
-			ret_execute_line = execute_line();
+			ret_execute_line = execute_line(&stack, line, line_number);
 			if (ret_execute_line == -1)
 			{
-				fprintf()
+				fprintf(stderr, "L%d: unknown instruction %s\n", line_number, op_data.opcode);
+				free(line);
+				fcolse(fd);
+				/*free_stack(stack);*/
+				exit(EXIT_FAILURE);				
 			}
 		}
 		free(line);		
@@ -67,21 +67,48 @@ int main(int argc, char **argv)
 	return (0);
 }
 
-execute_line()
+/**
+ * execute_line - get opcode and arg and execute the line
+ * @stack: stack head
+ * @line: the line readed from the file
+ * @line_number: line number
+ * @fd: file descripter
+ *
+ * Return: 0 in success, -1 in opcode is wrong
+ */
+ssize_t execute_line(stack_t **stack, char *line, unsigned int line_number)
+{
+	void (*opfunc)(stack_t **stack, unsigned int line_number);
+
+	op_data.opcode = strtok(line, " \n");
+	if (op_data.opcode[0] == "#")
+	{
+		free(line);
+		return (0);
+	}
+
+	opfunc = get_op_function(op_data.opcode);
+	if (opfunc == NULL)
+		return (-1);
+
+	opfunc(stack, line_number);
+	return (0);
+}
+
+void (get_op_function(char *opcode))(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
-	opcode_functions_t opfunc[] = { {"push", stack_push},
-					{"pall", stack_pull},
-					{"pint", stack_pint),
-					{NULL, NULL}
-					};
+	instruction_t opfunc[] = { 
+								{"push", stack_push},
+								{"pall", stack_pull},
+								{"pint", stack_pint),
+								{NULL, NULL}	
+							};
 
 	for (i = 0, opfunc[i] != NULL, i++)
 	{
 		if (strcmp(opcode, opfunc[i].opcode == 0)
-			return (opfunc[i].opfunction);
+			return (opfunc[i].f);
 	}
 	return (NULL);
-
 }
-int get_op_function()()
