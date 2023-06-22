@@ -5,19 +5,19 @@ op_data_t op_data = {NULL, NULL, NULL, 0};
 void stack_push(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
-	printf("stack push %ui\n", line_number);
+	printf("stack push %u\n", line_number);
 }
 
 void stack_pall(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
-	printf("stack pall %ui\n", line_number);
+	printf("stack pall %u\n", line_number);
 }
 
 void stack_pint(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
-	printf("stack pint %ui\n", line_number);
+	printf("stack pint %u\n", line_number);
 }
 
 
@@ -46,7 +46,6 @@ ssize_t execute_line(stack_t **stack, char *line, unsigned int line_number)
 	
 	for (i = 0; opfunc[i].opcode != NULL; i++)
 	{
-		printf("%i %s : %s\n", i, op_data.opcode, opfunc[i].opcode);
 		if (strcmp(op_data.opcode, opfunc[i].opcode) == 0)
 		{
 			opfunc[i].f(stack, line_number);
