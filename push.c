@@ -105,3 +105,25 @@ void add_stack(stack_t **stack, int n)
 	new->prev = NULL;
 	*stack = new;
 }
+
+
+/**
+ * stack_pall - push int to stack
+ * @stack: stack head
+ * @line_number: line number
+ *
+ * Return: void
+ */
+void stack_pall(stack_t **stack, unsigned int line_number)
+{
+	stack_t *head = *stack;
+
+	(void) line_number;
+	while (head != NULL)
+	{
+		printf("%i\n", head->n);
+		head = head->next
+	}
+
+	printf("%u: stack pall %s\n", line_number, op_data.oparg);
+}
