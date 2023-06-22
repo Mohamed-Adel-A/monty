@@ -1,5 +1,8 @@
 #include "monty.h"
 
+
+void stack_rotl(stack_t **stack, unsigned int line_number)
+
 /**
  * stack_rotl -  rotates the stack to the top.
  * The top element of the stack becomes the last one,
