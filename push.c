@@ -1,5 +1,11 @@
 #include "monty.h"
 
+/*********************************/
+int _isnumber(const char *str);
+void stack_push(stack_t **stack, unsigned int line_number);
+/*********************************/
+
+
 /**
  * _isnumber - check if string is number
  * @str: the string to be checked
@@ -31,7 +37,13 @@ int _isnumber(const char *str)
 	return (1);
 }
 
-
+/**
+ * stack_push - push int to stack
+ * @stack: stack head
+ * @line_number: line number
+ *
+ * Return: void
+ */
 void stack_push(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
