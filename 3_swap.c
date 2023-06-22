@@ -12,7 +12,7 @@ void stack_swap(stack_t **stack, unsigned int line_number);
 void stack_swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *first = *stack, *second;
-	int stack_size;
+	int stack_size, mid;
 
 	for (stack_size = 0; first != NULL ; stack_size++)
 	{
@@ -32,11 +32,7 @@ void stack_swap(stack_t **stack, unsigned int line_number)
 	first = *stack;
 	second = first->next;
 
-	first->next = second->next;
-	second->prev = first->prev;
-
-	first->prev = second;
-	second->next = first;
-
-	*stack = second;
+	mid = first->n;
+	first->n = second->n;
+	second->n = mid;
 }
