@@ -5,6 +5,7 @@ int _isnumber(const char *str);
 void stack_push(stack_t **stack, unsigned int line_number);
 void malloc_error(stack_t **stack);
 void add_stack(stack_t **stack, int n);
+void stack_pall(stack_t **stack, unsigned int line_number);
 /*********************************/
 
 
@@ -122,7 +123,7 @@ void stack_pall(stack_t **stack, unsigned int line_number)
 	while (head != NULL)
 	{
 		printf("%i\n", head->n);
-		head = head->next
+		head = head->next;
 	}
 
 	printf("%u: stack pall %s\n", line_number, op_data.oparg);
