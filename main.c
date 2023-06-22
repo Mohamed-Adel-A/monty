@@ -4,12 +4,6 @@ op_data_t op_data = {NULL, NULL, NULL, 0};
 
 
 
-void stack_pall(stack_t **stack, unsigned int line_number)
-{
-	(void) stack;
-	printf("%u: stack pall %s\n", line_number, op_data.oparg);
-}
-
 void stack_pint(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
