@@ -52,6 +52,7 @@ ssize_t execute_line(stack_t **stack, char *line, unsigned int line_number)
 					{"pchar", stack_pchar},
 					{"pstr", stack_pstr},
 					{"rotl", stack_rotl},
+					{"rotr", stack_rotr},
 					{NULL, NULL}
 				};
 
