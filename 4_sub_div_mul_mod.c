@@ -9,7 +9,8 @@ void stack_mod(stack_t **stack, unsigned int line_number);
 
 
 /**
- * stack_sub - subtracts the top element of the stack from the second top element
+ * stack_sub - subtracts the top element of the stack
+ * from the second top element
  * @stack: stack head
  * @line_number: line number
  *
@@ -48,7 +49,8 @@ void stack_sub(stack_t **stack, unsigned int line_number)
 
 
 /**
- * stack_div - subtracts the top element of the stack from the second top element
+ * stack_div - subtracts the top element of the stack from
+ * the second top element
  * @stack: stack head
  * @line_number: line number
  *
@@ -77,7 +79,7 @@ void stack_div(stack_t **stack, unsigned int line_number)
 	first = *stack;
 	second = first->next;
 
-  if (first->n == 0)
+	if (first->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n",
 				line_number);
@@ -98,7 +100,8 @@ void stack_div(stack_t **stack, unsigned int line_number)
 
 
 /**
- * stack_mul - multiplies the second top element of the stack with the top element
+ * stack_mul - multiplies the second top element of the stack
+ * with the top element
  * @stack: stack head
  * @line_number: line number
  *
@@ -166,7 +169,7 @@ void stack_mod(stack_t **stack, unsigned int line_number)
 	first = *stack;
 	second = first->next;
 
-  if (first->n == 0)
+	if (first->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n",
 				line_number);
