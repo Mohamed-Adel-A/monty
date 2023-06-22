@@ -3,6 +3,8 @@
 /*********************************/
 int _isnumber(const char *str);
 void stack_push(stack_t **stack, unsigned int line_number);
+void malloc_error(stack_t **stack);
+void add_stack(stack_t **stack, int n);
 /*********************************/
 
 
