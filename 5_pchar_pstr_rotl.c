@@ -14,6 +14,7 @@ void stack_pchar(stack_t **stack, unsigned int line_number)
 {
 	stack_t *head = *stack;
 
+	(void) line_number;
 	if (head == NULL)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n",
