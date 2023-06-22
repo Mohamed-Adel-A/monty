@@ -5,19 +5,19 @@ op_data_t op_data = {NULL, NULL, NULL, 0};
 void stack_push(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
-	printf("stack push %ui", line_number);
+	printf("stack push %ui\n", line_number);
 }
 
 void stack_pall(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
-	printf("stack pall %ui", line_number);
+	printf("stack pall %ui\n", line_number);
 }
 
 void stack_pint(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
-	printf("stack pint %ui", line_number);
+	printf("stack pint %ui\n", line_number);
 }
 
 
