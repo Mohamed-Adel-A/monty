@@ -140,7 +140,8 @@ void stack_mul(stack_t **stack, unsigned int line_number)
 
 
 /**
- * stack_mod - subtracts the top element of the stack from the second top element
+ * stack_mod - subtracts the top element of the stack
+ * from the second top element
  * @stack: stack head
  * @line_number: line number
  *
