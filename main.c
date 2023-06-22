@@ -45,7 +45,6 @@ ssize_t execute_line(stack_t **stack, char *line, unsigned int line_number)
 	if (!op_data.opcode || op_data.opcode[0] == '#')
 		return (0);
 	
-	opfunc = get_op_function(op_data.opcode);
 	for (i = 0, opfunc[i] != NULL, i++)
 	{
 		if (strcmp(opcode, opfunc[i].opcode == 0)
