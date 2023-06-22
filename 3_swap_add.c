@@ -1,6 +1,7 @@
 #include "monty.h"
 
 void stack_swap(stack_t **stack, unsigned int line_number);
+void stack_add(stack_t **stack, unsigned int line_number);
 
 /**
  * stack_swap -  swaps the top two elements of the stack.
