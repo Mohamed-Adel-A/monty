@@ -15,6 +15,9 @@ void stack_push(stack_t **stack, unsigned int line_number);
 int _isnumber(const char *str)
 {
 	int i = 0;
+	
+	if (str == NULL || str[0] == '\0')
+		return (0);
 
 	while (str[i] == ' ' || str[i] == '\t')
 	{
@@ -46,7 +49,9 @@ int _isnumber(const char *str)
  */
 void stack_push(stack_t **stack, unsigned int line_number)
 {
-	(void) stack;
+	int number;
+	stack_t new_node;
+
 	if (_isnumber(op_data.oparg) == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n",
@@ -55,6 +60,46 @@ void stack_push(stack_t **stack, unsigned int line_number)
 		fclose(op_data.fd);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
-  }
+	}
+
+	number = atoi(op_data.oparg);
+
+	
 	printf("%u: stack push %s\n", line_number, op_data.oparg);
+}
+
+/**
+ * malloc_error - handle error when malloc
+ * @stack: stack head
+ *
+ * Return: void
+ */
+void malloc_error(stack_t **stack)
+{
+	fprintf(stderr, "Error: malloc failed");
+	free(op_data.line);
+	fclose(op_data.fd);
+	free_stack(*stack);
+	exit(EXIT_FAILURE);
+}
+
+
+void add_stack(stack_t **stack, int n)
+{
+	stack_t *new, head = *stack;
+
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+	{
+		malloc_error(*head);
+	}
+
+	new->n = n;
+	if (head != NULL)
+	{
+		head->prev = NULL;
+	}
+	new->next = head;
+	new->prev = NULL;
+	*head = new;
 }
