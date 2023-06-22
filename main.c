@@ -24,7 +24,7 @@ void stack_pint(stack_t **stack, unsigned int line_number)
  */
 void free_stack(stack_t *stack)
 {
-	stack_t next;
+	stack_t *next;
 
 	if (stack == NULL)
 		return;
