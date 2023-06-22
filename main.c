@@ -106,13 +106,13 @@ int main(int argc, char **argv)
 						line_number, op_data.opcode);
 				free(line);
 				fclose(fd);
-				free_stack(&stack);
+				free_stack(stack);
 				exit(EXIT_FAILURE);
 			}
 		}
 		free(line);
 		line = NULL;
 	}
-	free_stack(&stack);
+	free_stack(stack);
 	return (0);
 }
