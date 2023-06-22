@@ -48,6 +48,7 @@ ssize_t execute_line(stack_t **stack, char *line, unsigned int line_number)
 					{"sub", stack_sub},
 					{"div", stack_div},
 					{"mul", stack_mul},
+					{"mod", stack_mod},
 					{NULL, NULL}
 				};
 
