@@ -48,7 +48,7 @@ void stack_rotr(stack_t **stack, unsigned int line_number)
 	stack_t *copy;
 
 	(void) line_number;
-	copy = *head;
+	copy = *stack;
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		return;
@@ -57,10 +57,9 @@ void stack_rotr(stack_t **stack, unsigned int line_number)
 	{
 		copy = copy->next;
 	}
-	copy->next = *head;
+	copy->next = *stack;
 	copy->prev->next = NULL;
 	copy->prev = NULL;
-	(*head)->prev = copy;
-	(*head) = copy;
-}
+	(*stack)->prev = copy;
+	(*stack) = copy;
 }
