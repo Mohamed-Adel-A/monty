@@ -36,7 +36,6 @@ void free_stack(stack_t **stack)
  * @stack: stack head
  * @line: the line readed from the file
  * @line_number: line number
- * @fd: file descripter
  *
  * Return: 0 in success, -1 in opcode is wrong
  */
