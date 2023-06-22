@@ -3,13 +3,6 @@
 op_data_t op_data = {NULL, NULL, NULL, 0};
 
 
-
-void stack_pint(stack_t **stack, unsigned int line_number)
-{
-	(void) stack;
-	printf("%u: stack pint %s\n", line_number, op_data.oparg);
-}
-
 /**
  * free_stack - free stack
  * @stack: stack head
@@ -23,7 +16,7 @@ void free_stack(stack_t *stack)
 	if (stack == NULL)
 		return;
 
-	while(stack != NULL)
+	while (stack != NULL)
 	{
 		next = stack->next;
 		free(stack);
