@@ -54,7 +54,7 @@ void stack_pint(stack_t **stack, unsigned int line_number)
 
 
 /**
- * stack_pon - removes the top element of the stack.
+ * stack_pop - removes the top element of the stack.
  * @stack: stack head
  * @line_number: line number
  *
