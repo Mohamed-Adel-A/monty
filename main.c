@@ -20,6 +20,16 @@ void stack_pint(stack_t **stack, unsigned int line_number)
 	printf("%u: stack pint %s\n", line_number, op_data.oparg);
 }
 
+/**
+ * free_stack - free stack
+ * @stack: stack head
+ *
+ * Return: void
+ */
+void free_stack(stack_t **stack)
+{
+	(void) stack;
+}
 
 /**
  * execute_line - get opcode and arg and execute the line
@@ -88,7 +98,6 @@ int main(int argc, char **argv)
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-
 	for (line_number = 1; ret_getline > 0 ; line_number++)
 	{
 		ret_getline = getline(&line, &line_size, fd);
@@ -102,12 +111,13 @@ int main(int argc, char **argv)
 						line_number, op_data.opcode);
 				free(line);
 				fclose(fd);
-				/*free_stack(stack);*/
+				free_stack(&stack);
 				exit(EXIT_FAILURE);
 			}
 		}
 		free(line);
 		line = NULL;
 	}
+	free_stack(&stack);
 	return (0);
 }
