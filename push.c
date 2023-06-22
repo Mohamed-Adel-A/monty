@@ -50,7 +50,6 @@ int _isnumber(const char *str)
 void stack_push(stack_t **stack, unsigned int line_number)
 {
 	int number;
-	stack_t new_node;
 
 	if (_isnumber(op_data.oparg) == 0)
 	{
@@ -86,7 +85,7 @@ void malloc_error(stack_t **stack)
 
 void add_stack(stack_t **stack, int n)
 {
-	stack_t *new, head = *stack;
+	stack_t *new, *head = *stack;
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
