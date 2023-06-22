@@ -95,7 +95,7 @@ int main(int argc, char **argv)
 			ret_execute_line = execute_line(&stack, line, line_number);
 			if (ret_execute_line == -1)
 			{
-				fflsh(1);
+				fflush(0);
 				fprintf(stderr, "L%d: unknown instruction %s\n", line_number, op_data.opcode);
 				free(line);
 				fclose(fd);
