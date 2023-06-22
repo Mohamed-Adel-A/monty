@@ -30,7 +30,7 @@ void stack_pall(stack_t **stack, unsigned int line_number)
 
 void stack_pint(stack_t **stack, unsigned int line_number)
 {
-	stack_t *head = *stack, *next;
+	stack_t *head = *stack;
 
 	if (head == NULL)
 	{
