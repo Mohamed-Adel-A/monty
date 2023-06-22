@@ -78,7 +78,6 @@ ssize_t execute_line(stack_t **stack, char *line, unsigned int line_number)
  */
 int main(int argc, char **argv)
 {
-	FILE *fd;
 	char *filename, *line = NULL;
 	size_t line_size = 0;
 	ssize_t ret_getline = 1, ret_execute_line;
@@ -90,26 +89,25 @@ int main(int argc, char **argv)
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	filename = argv[1];
-	fd = fopen(filename, "r");
-	if (fd == NULL)
+
+	op_data.fd = fopen(argv[1], "r");
+	if (op_data.fd == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", filename);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	for (line_number = 1; ret_getline > 0 ; line_number++)
 	{
-		ret_getline = getline(&line, &line_size, fd);
+		ret_getline = getline(&line, &line_size, op_data.fd);
 		if (ret_getline > 0)
 		{
 			ret_execute_line = execute_line(&stack, line, line_number);
 			if (ret_execute_line == -1)
 			{
-				fflush(0);
 				fprintf(stderr, "L%d: unknown instruction %s\n",
 						line_number, op_data.opcode);
 				free(line);
-				fclose(fd);
+				fclose(op_data.fd);
 				free_stack(stack);
 				exit(EXIT_FAILURE);
 			}
@@ -118,5 +116,6 @@ int main(int argc, char **argv)
 		line = NULL;
 	}
 	free_stack(stack);
+	fclose(op_data.fd);
 	return (0);
 }
