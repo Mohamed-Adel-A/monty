@@ -2,6 +2,74 @@
 
 op_data_t op_data = {NULL, NULL, NULL, 0};
 
+void stack_push(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	printf("stack push %ui", line_number);
+}
+
+void stack_pall(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	printf("stack pall %ui", line_number);
+}
+
+void stack_pint(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	printf("stack pint %ui", line_number);
+}
+
+
+void (get_op_function(char *opcode))(stack_t **stack, unsigned int line_number)
+{
+	int i = 0;
+	instruction_t opfunc[] = { 
+								{"push", stack_push},
+								{"pall", stack_pall},
+								{"pint", stack_pint),
+								{NULL, NULL}	
+							};
+
+	for (i = 0, opfunc[i] != NULL, i++)
+	{
+		if (strcmp(opcode, opfunc[i].opcode == 0)
+			return (opfunc[i].f);
+	}
+	return (NULL);
+}
+
+
+
+/**
+ * execute_line - get opcode and arg and execute the line
+ * @stack: stack head
+ * @line: the line readed from the file
+ * @line_number: line number
+ * @fd: file descripter
+ *
+ * Return: 0 in success, -1 in opcode is wrong
+ */
+ssize_t execute_line(stack_t **stack, char *line, unsigned int line_number)
+{
+	void (*opfunc)(stack_t **stack, unsigned int line_number);
+
+	op_data.opcode = strtok(line, " \n");
+	if (op_data.opcode[0] == "#")
+	{
+		free(line);
+		return (0);
+	}
+
+	opfunc = get_op_function(op_data.opcode);
+	if (opfunc == NULL)
+		return (-1);
+
+	opfunc(stack, line_number);
+	return (0);
+}
+
+
 /**
  * main - main function
  * @argc: argc
@@ -52,70 +120,4 @@ int main(int argc, char **argv)
 	}
 
 	return (0);
-}
-
-/**
- * execute_line - get opcode and arg and execute the line
- * @stack: stack head
- * @line: the line readed from the file
- * @line_number: line number
- * @fd: file descripter
- *
- * Return: 0 in success, -1 in opcode is wrong
- */
-ssize_t execute_line(stack_t **stack, char *line, unsigned int line_number)
-{
-	void (*opfunc)(stack_t **stack, unsigned int line_number);
-
-	op_data.opcode = strtok(line, " \n");
-	if (op_data.opcode[0] == "#")
-	{
-		free(line);
-		return (0);
-	}
-
-	opfunc = get_op_function(op_data.opcode);
-	if (opfunc == NULL)
-		return (-1);
-
-	opfunc(stack, line_number);
-	return (0);
-}
-
-void (get_op_function(char *opcode))(stack_t **stack, unsigned int line_number)
-{
-	int i = 0;
-	instruction_t opfunc[] = { 
-								{"push", stack_push},
-								{"pall", stack_pall},
-								{"pint", stack_pint),
-								{NULL, NULL}	
-							};
-
-	for (i = 0, opfunc[i] != NULL, i++)
-	{
-		if (strcmp(opcode, opfunc[i].opcode == 0)
-			return (opfunc[i].f);
-	}
-	return (NULL);
-}
-
-
-
-void stack_push(stack_t **stack, unsigned int line_number)
-{
-	(void) stack;
-	printf("stack push %ui", line_number);
-}
-
-void stack_pall(stack_t **stack, unsigned int line_number)
-{
-	(void) stack;
-	printf("stack pall %ui", line_number);
-}
-
-void stack_pint(stack_t **stack, unsigned int line_number)
-{
-	(void) stack;
-	printf("stack pint %ui", line_number);
 }
