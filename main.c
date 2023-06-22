@@ -6,7 +6,7 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		perror("USAGE: monty file");
+		fprint(stderr, "USAGE: monty file");
 		exit(EXIT_FAILURE);		
 	}
 	(void) argv;
