@@ -47,7 +47,8 @@ void stack_rotr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *copy;
 
-	copy = *head;
+	(void) line_number;
+	copy = *head
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		return;
