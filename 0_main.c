@@ -38,12 +38,13 @@ ssize_t execute_line(stack_t **stack, char *line, unsigned int line_number)
 {
 	int i = 0;
 	instruction_t opfunc[] = {
-								{"push", stack_push},
-								{"pall", stack_pall},
-								{"pint", stack_pint},
-								{"pop", stack_pop},
-								{NULL, NULL}
-							};
+					{"push", stack_push},
+					{"pall", stack_pall},
+					{"pint", stack_pint},
+					{"pop", stack_pop},
+					{"swap", stack_swap},
+					{NULL, NULL}
+				};
 
 	op_data.opcode = strtok(line, " \n");
 	if (!op_data.opcode || op_data.opcode[0] == '#')
