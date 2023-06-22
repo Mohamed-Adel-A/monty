@@ -1,6 +1,4 @@
 #include "monty.h"
-#define GNU_SOURCE
-#include <stdio.h>
 
 op_data_t op_data = {NULL, NULL, NULL, 0};
 
