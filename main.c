@@ -22,26 +22,6 @@ void stack_pint(stack_t **stack, unsigned int line_number)
 }
 
 
-void ((get_op_function)(char *opcode))(stack_t **stack, unsigned int line_number)
-{
-	int i = 0;
-	instruction_t opfunc[] = { 
-								{"push", stack_push},
-								{"pall", stack_pall},
-								{"pint", stack_pint},
-								{NULL, NULL}	
-							};
-
-	for (i = 0, opfunc[i] != NULL, i++)
-	{
-		if (strcmp(opcode, opfunc[i].opcode == 0)
-			return (opfunc[i].f);
-	}
-	return (NULL);
-}
-
-
-
 /**
  * execute_line - get opcode and arg and execute the line
  * @stack: stack head
