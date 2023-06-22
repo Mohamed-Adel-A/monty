@@ -56,10 +56,9 @@ void stack_rotr(stack_t **stack, unsigned int line_number)
 		last = last->next;
 	}
 
+	last->next = first;
 	first->prev = last;
 	(last->prev)->next = NULL;
-
-	last->next = first;
 	last->prev = NULL;
 
 	*stack = last;
